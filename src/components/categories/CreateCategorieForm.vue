@@ -43,7 +43,7 @@
 <script>
   import faker from 'faker';
   import firebase from 'firebase';
-  import { Categories } from '../firebase/collections';
+  import { Categories } from '../../firebase/collections';
 
 
   export default {

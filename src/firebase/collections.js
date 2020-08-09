@@ -1,5 +1,5 @@
 import { firestore as db } from "./init";
 
-module.exports = {
-  Categories: db.collection('categories')
-}
+export const Categories = db.collection('categories');
+
+export const Products = db.collection('products');

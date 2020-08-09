@@ -2,22 +2,27 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import store from '../store'
+import Dashboard from "../views/Dashboard";
+import Products from "../views/Products";
+import Categories from "../views/Categories";
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'dashboard',
+    component: Dashboard
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/products',
+    name: 'products',
+    component: Products
+  },
+  {
+    path: '/categories',
+    name: 'categories',
+    component: Categories
   }
 ]
 
@@ -28,11 +33,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(route => route.meta.requiresAuth)) {
-    if(store.getters['auth/loggedIn'])
+  if (to.matched.some(route => route.meta.requiresAuth)) {
+    if (store.getters['auth/loggedIn'])
       next()
     else
-      next({ name: 'login' })
+      next({name: 'login'})
   } else
     next();
 })

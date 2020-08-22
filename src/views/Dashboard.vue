@@ -5,8 +5,13 @@
 </template>
 
 <script>
+  import AdminLayout from "../layouts/AdminLayout";
+
   export default {
-    name: "Dashboard"
+    name: "Dashboard",
+    created() {
+      this.$emit('update:layout', AdminLayout);
+    }
   }
 </script>
 

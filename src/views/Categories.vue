@@ -1,7 +1,5 @@
 <template>
-  <v-container
-    fluid
-  >
+  <v-container>
     <h1>Categories</h1>
 
     <create-categorie-form/>
@@ -35,6 +33,7 @@
 </template>
 
 <script>
+  import AdminLayout from "../layouts/AdminLayout";
   import CreateCategorieForm from "../components/categories/CreateCategorieForm";
   import { Categories } from '../firebase/collections';
 
@@ -47,6 +46,7 @@
       categories: []
     }),
     created() {
+      this.$emit('update:layout', AdminLayout)
       Categories.orderBy('createdAt', 'desc').onSnapshot(snapshot => {;
         this.categories = snapshot.docs.map(doc => ({
           ...doc.data(),

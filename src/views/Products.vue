@@ -1,7 +1,5 @@
 <template>
-  <v-container
-    fluid
-  >
+  <v-container>
     <h1>Products</h1>
 
     <create-product/>
@@ -54,6 +52,7 @@
   import {Products, Categories} from '../firebase/collections';
   import faker from 'faker';
   import CreateProduct from "../components/products/CreateProduct";
+  import AdminLayout from "../layouts/AdminLayout";
 
   export default {
     name: "Products",
@@ -66,6 +65,7 @@
       selectedCategorie: ''
     }),
     created() {
+      this.$emit('update:layout', AdminLayout);
       this.loadCategories();
 
       /**

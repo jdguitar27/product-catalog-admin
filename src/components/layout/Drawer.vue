@@ -37,7 +37,7 @@
       >
         <v-expansion-panel-header>
           <v-flex>
-            <v-icon>mdi-format-list-bulleted-square</v-icon>
+            <v-icon>mdi-account-circle</v-icon>
             Item
           </v-flex>
         </v-expansion-panel-header>

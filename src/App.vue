@@ -1,42 +1,31 @@
 <template>
-  <v-app id="inspire">
-
-    <drawer/>
-    <v-app-bar
-      app
-      clipped-left
-    >
-      <v-app-bar-nav-icon @click.stop="toggleDrawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
-    </v-app-bar>
-
-    <v-main>
-        <router-view></router-view>
-    </v-main>
-
-    <v-footer app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
-  </v-app>
+  <v-fade-transition appear>
+    <component :is="layout">
+      <v-fade-transition mode="out-in">
+        <router-view :layout.sync="layout"></router-view>
+      </v-fade-transition>
+    </component>
+  </v-fade-transition>
 </template>
 
 <script>
-  import Drawer from "./components/layout/Drawer";
-  import { mapActions } from 'vuex';
+  import SimpleLayout from "./layouts/SimpleLayout";
+  import AdminLayout from "./layouts/AdminLayout";
 
   export default {
     name: 'App',
     components: {
-      Drawer
+      SimpleLayout,
+      AdminLayout
     },
     props: {
       source: String,
     },
+    data: () => ({
+      layout: 'admin-layout'
+    }),
     created() {
       this.$vuetify.theme.dark = true
-    },
-    methods: {
-      ...mapActions(['toggleDrawer']),
     }
   }
 </script>

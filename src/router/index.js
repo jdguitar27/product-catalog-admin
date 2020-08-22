@@ -5,24 +5,39 @@ import store from '../store'
 import Dashboard from "../views/Dashboard";
 import Products from "../views/Products";
 import Categories from "../views/Categories";
+import Login from "../views/Login";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
     path: '/',
     name: 'dashboard',
-    component: Dashboard
+    component: Dashboard,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/products',
     name: 'products',
-    component: Products
+    component: Products,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/categories',
     name: 'categories',
-    component: Categories
+    component: Categories,
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
